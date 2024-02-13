@@ -31,8 +31,10 @@
 5. 기본 자료형
    - 정수형 
 <img width="298" alt="스크린샷 2024-02-13 오후 8 15 32" src="https://github.com/giyoungjang/kotlin-study/assets/126555597/3a8e15f3-355a-4bae-9dcc-93efbf9b6a24">
+
    - 실수형
   <img width="316" alt="스크린샷 2024-02-13 오후 8 17 30" src="https://github.com/giyoungjang/kotlin-study/assets/126555597/8d568cc8-d226-4c21-985f-b93bec856f14">
+  
 ---
     fun main() {
         var intValue:Int = 1234
@@ -73,7 +75,9 @@
 ## 형변환과 배열
 1. 형변환
    - 하나의 변수에 지정된 자료형을 호환되는 다른 자료형으로 변경하는 기능
+     
 <img width="210" alt="스크린샷 2024-02-13 오후 8 29 17" src="https://github.com/giyoungjang/kotlin-study/assets/126555597/62c70d28-3a3b-440b-b808-000f770d1a8c">
+
 ---
     fun main() {
         var a: Int = 154234
