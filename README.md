@@ -467,7 +467,20 @@
    
 <img width="241" alt="스크린샷 2024-02-14 오후 7 05 02" src="https://github.com/giyoungjang/kotlin-study/assets/126555597/24715eff-a90f-4deb-ba52-fd1495fe2650"> <img width="440" alt="스크린샷 2024-02-14 오후 7 05 27" src="https://github.com/giyoungjang/kotlin-study/assets/126555597/80a16502-1765-4341-be95-080520a2261a">
 
+2.1 패키지 스코프
+  - public - 어떤 패키지에서도 접근 가능
+  - internal - 같은 모듈 내에서만 접근 가능
+  - private - 같은 파일 내에서만 접근 가능
+  * protected 는 사용하지 않음
 
+2.2 클래스 스코프
+  - public - 클래스 외부에서 늘 접근 가능
+  - private - 클래스 내부에서만 접근 가능
+  - protected - 클래스 자신과 상속받은 클래스에서 접근 가능
+  * internal 은 사용하지 않음
+  * 
+
+## 고차함수와 람다함수
 
 
 
