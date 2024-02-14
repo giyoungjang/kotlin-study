@@ -96,15 +96,85 @@
     }
 
 ## 타입추론과 함수
+1. 타입추론
+   - 변수나 함수들을 선얼할 때나 연산이 이루어 질 때 자료형을 코드에 명시하지 않아도 코틀린이 자동으로 자료형을 추론해주는 기능
+---
+    fun main() {
+        var a = 1234
+        var b = 1234L
 
+        var c = 12.45
+        var d = 12.45f
 
+        var e = 0xABCD
+        var f = 0b01010101
 
+        var g = true
+        var h = 'c'
+    }
+---
+2. 함수
+---
+    fun main() {
+        println(add(5, 6, 7))
+    }
+    
+    fun add(a: Int, b: Int, c: Int): Int {
+        return a + b + c
+    }
+    fun add(a: Int, b: Int, c: Int) = a + b + c
+---
+## 조건문과 비교연산자
+1. 조건문
+---
+    fun main() {
+        var a = 11
+        if(a > 10) {
+            println("a는 10보다 크다")
+        } else {
+            println("a는 10보다 작거나 같다")
+        }
+    }
+---
+2. 비교연산자
+   -   <   <=   >   >=   !=   ==
+   -   is !is
+3. 다중조건문
+   - when
+---
+    fun main(){
+    	doWhen(1)
+        doWhen("Jang")
+        doWhen(12L)
+        doWhen(3.14159)
+        doWhen("Kotlin")
+    }
+    
+    fun doWhen (a: Any) {
+        when(a){
+            1 -> println("정수 1입니다")
+            "Jang" -> println("장의 코틀린 공부")
+            is Long -> println("Long 타입 입니다")
+            !is String -> println("String 타입이 아닙니다")
+            else -> println("어떤 조건도 만족하지 않습니다")
+        }
+    }
+    
+---
+   - 표현식
+---
 
-
-
-
-
-
+    fun doWhen (a: Any) {
+        var result = when(a){
+            1 -> "정수 1입니다"
+            "Jang" -> "장의 코틀린 공부"
+            is Long -> "Long 타입 입니다"
+            !is String -> "String 타입이 아닙니다"
+            else -> "어떤 조건도 만족하지 않습니다"
+        }
+        println(result)
+    }
+---
 
 
 
