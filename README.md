@@ -617,35 +617,35 @@
    - Static 멤버 - 클래스 내부에서 별도의 영역에 고정적으로 존재하여 인스턴스를 생성하지 않아도 공용으로 사용가능한 속성이나 함수
 
 ---
-fun main() {
-    var a = FoodPoll("짜장")
-    var b = FoodPoll("짬뽕")
-    
-    a.vote()
-    a.vote()
-    
-    b.vote()
-    b.vote()
-    b.vote()
-    
-    println("${a.name}:${a.count}")
-    println("${b.name}:${b.count}")
-    println("총계:${FoodPoll.total}")
-    
-}
-
-class FoodPoll(val name: String){
-    companion object {
-        var total = 0
+    fun main() {
+        var a = FoodPoll("짜장")
+        var b = FoodPoll("짬뽕")
+        
+        a.vote()
+        a.vote()
+        
+        b.vote()
+        b.vote()
+        b.vote()
+        
+        println("${a.name}:${a.count}")
+        println("${b.name}:${b.count}")
+        println("총계:${FoodPoll.total}")
+        
     }
     
-    var count = 0
-    
-    fun vote(){
-        total++
-        count++
+    class FoodPoll(val name: String){
+        companion object {
+            var total = 0
+        }
+        
+        var count = 0
+        
+        fun vote(){
+            total++
+            count++
+        }
     }
-}
 ---
     짜장:2
     짬뽕:3
