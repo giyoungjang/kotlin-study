@@ -867,7 +867,301 @@
     
 ---
 
+## 문자열 다루는 법
 
+- 'String' 이라는 클래스로 문자열을 다루며
+---
+    val text = "문자열"
+---
+- ""안에 문자열을 넣어 리터럴을 만들면 새 String 객체가 생성되는 것을 보았다.
+---
+    fun main() {
+     
+        val test1 = "Test.Kotlin.String"
+        
+        println(test1.length)
+        
+        println(test1.toLowerCase())  //소문자로 변환
+        println(test1.toUpperCase())  //대문자로 변환
+    
+        val test2 = test1.split(".")  //점을 기준으로 나눈 문자열 배열
+    	println(test2)
+        
+        println(test2.joinToString())  // 문자열을 합침
+        println(test2.joinToString("-"))
+        
+        println(test1.substring(5..10))
+        
+    }
+---
+    // 문자열이 비어있는지 판단하여 boolean 값으로 반환받는 함수들
+    
+    fun main() {
+     
+        val nullString:String? = null
+        val emptyString = ""
+        val blankString = " "
+        val normalString = "A"
+        
+        println(nullString.isNullOrEmpty())
+        println(emptyString.isNullOrEmpty())
+        println(blankString.isNullOrEmpty())
+        println(normalString.isNullOrEmpty())
+        
+        println()
+        
+        println(nullString.isNullOrBlank())
+        println(emptyString.isNullOrBlank())
+        println(blankString.isNullOrBlank())
+        println(normalString.isNullOrBlank())
+            
+    }
+---
+    true
+    true
+    false
+    false
+    
+    true
+    true
+    true
+    false
+---
+    fun main() {
+        
+    	var test3 = "kotlin.kt"
+        var test4 = "java.java"
+        
+        println(test3.startsWith("java"))
+        println(test4.startsWith("java"))
+        
+        println(test3.endsWith(".kt"))
+        println(test4.endsWith(".kt"))
+        
+        println(test3.contains("lin"))
+        println(test4.contains("lin"))
+        
+    }
+---
+    false
+    true
+    true
+    false
+    true
+    false
+---
+
+## null 값을 처리하는 방법? 동일한지를 확인하는 방법?
+
+- nullable 변수에서 nul을 처리하는 법과 변수 간의 동일성을 확인하는 방법
+- ?.  : null safe operator
+- ?:  : elvis operator
+- !!. : non-null assertion operator
+---
+    /* 참조연산자를 실행하기 전에 먼저 객체가 null 인지 확인부터하고 객체가 null 이라면
+     * 뒤 따라오던 toUppercase()를 실행하지 않는다
+    
+    samle?.toUpperCase()
+
+    // 객체가 null 이 아니라면 그대로 사용하지만 null 이라면 연산자 우측의 객체로 대체되는 연산자이다.
+
+    sample?:"default"
+
+    /* 참조연산자를 사용할 때 null 여부를 컴파일시 확인하지 않도록 하여 
+     * 런타임시 null pointer exception 이 나도록 의도적으로 방치하는 연산자입니다.
+
+    sample!!.toUpperCase()
+---
+### 실습
+---
+    fun main() {
+        
+    	var a: String? = null
+        
+        println(a?.toUpperCase())
+        
+        println(a?:"default".toUpperCase())
+        
+        println(a!!.toUpperCase())
+        
+    }
+---
+    null
+    DEFAULT
+    Exception in thread "main" java.lang.NullPointerException
+     at FileKt.main (File.kt:9) 
+     at FileKt.main (File.kt:-1) 
+     at jdk.internal.reflect.NativeMethodAccessorImpl.invoke0 (:-2)
+---
+- null safe 연산자는 스코프 함수와 사용하면 더욱 편리합니다.
+---
+    // null 을 체크하기 위해 if 문을 사용하는 것보다 상당한 편리한 기능
+    fun main() {
+        
+    	var a: String? = "Kotlin Exam"
+        
+    	a?.run{
+            println(toUpperCase())
+            println(toLowerCase())
+        }
+        
+    }
+---
+- 동일성
+    - 내용의 동일성 : a == b
+    - 자동으로 판단되는 것이 아닌 코틀린의 모든 클래스가 내부적으로 상속받는 'any'라는 최상위 클래스의
+    - equals() 함수가 반환하는 Boolean 값으로 판단하게 됩니다.
+      
+  <img width="738" alt="스크린샷 2024-02-15 오후 4 37 04" src="https://github.com/giyoungjang/kotlin-study/assets/126555597/9ad09c5c-1ee4-403a-bce8-5fbc65e8e977">
+
+    - 객체의 동일성 : a === b
+
+<img width="741" alt="스크린샷 2024-02-15 오후 4 37 28" src="https://github.com/giyoungjang/kotlin-study/assets/126555597/f2aab73e-9dec-4525-80c8-94a7b83f4b8e">
+
+  - 기본 자료형에는 자료형의 특징에 따라 equals() 함수가 이미 구현되어 있지만 커스텀 class 를 만들때는
+---
+    open fun equals(other:Any?):Boolean
+---
+   - 동일성을 확인해주는 구문을 별도로 구현해야 됩니다
+---
+    fun main() {
+        
+        var a = Product("콜라", 1000)
+        var b = Product("콜라", 1000)
+        var c = a
+        var d = Product("사이다", 1000)
+        
+        println(a == b)
+        println(a === b)
+        
+        println(a == c)
+        println(a === c)
+        
+        println(a == d)
+        println(a === d)
+        
+    }
+    
+    class Product(val name: String, val price: Int) {
+        override fun equals(other: Any?):Boolean {
+            if(other is Product){
+                return other.name == name && other.price == price
+            } else {
+                return false
+            }
+        }
+    }
+---
+    true
+    false
+    true
+    true
+    false
+    false
+---
+
+## 함수의 argument 를 다루는 방법과 infix 함수
+
+- 함수를 더 다양한 방법으로 사용할 수 있는 여러 기능들
+- overloading - 이것은 '같은 scope 안'에서
+---
+    fun same (x: Int)
+    fun same (x: Int, text: String)
+    fun same (x: Int, y: Int)
+---
+- 'same'으로 이름이 같더라도 파라미터의 자료형이 다르거나 파라미터의 갯수가 다르다면 서로 다른 함수로 동작할 수 있다.
+---
+    fun same(x: Int, y:Int)
+    fun same(a: Int, b:Int)
+---
+- 다만, 파라미터에 이름만 다르게 묶고 자료형과 갯수가 같다면 오버로딩을 할 수 없습니다.
+---
+    fun main() {
+        
+        read(7)
+        read("감사합니다")
+        
+    }
+    
+    fun read(x: Int) {
+        println("숫자 $x 입니다")
+    }
+    
+    fun read(x: String) {
+        println(x)
+    }
+---
+- 파라미터를 받아야 하는 함수이지만 별다른 패러미터가 없더라도 기본값으로 동작해야 한다면
+- default arguments 를 사용합니다.
+---
+    fun main() {
+        
+        deliveryItem("짬뽕")
+        deliveryItem("책", 3)
+        deliveryItem("노트북", 30, "학교")
+        
+    }
+    
+    fun deliveryItem(name: String,
+                     count: Int = 1, 
+                     destination: String = "집"){
+        println("${name}, ${count}개를 ${destination}에 배달하였습니다.")
+    }
+---
+    짬뽕, 1개를 집에 배달하였습니다.
+    책, 3개를 집에 배달하였습니다.
+    노트북, 30개를 학교에 배달하였습니다.
+---
+- 실행해보면 패러미터가 채워진 경우에는 입력받은 패러미터를 사용하여 출력되지만 패러미터가 없다면 지정된 값으로 출력되는 것을 볼 수 있다.
+- 그런데, 이름과 목적지만 넣고 개수는 기본값을 이용하고 싶다면
+- named arguments 를 사용하고 이는 패러미터의 순서와 관계없이 패러미터의 이름을 사용하여 직접 패러미터의 값을 할당하는 기능입니다.
+---
+    deliveryItem("선물", destination = "친구집")
+---
+    선물, 1개를 친구집에 배달하였습니다.
+---
+- 이번엔 같은 자료형을 개수에 상관없이 패러미터로 받고 싶을 때 사용하는
+- variable number of arguments (vararg)
+---
+    fun main() {
+        
+        sum(1, 2, 3, 4)
+        
+    }
+    
+    fun sum(vararg numbers: Int){
+        var sum = 0
+        
+        for(n in numbers){
+            sum += n
+        }
+        print(sum)
+    }
+---
+- vararg는 개수가 지정되지 않은 패러미터라는 특징이 있으므로
+---
+    fun sample(text: String, vararg x: Int)
+---
+- 맨 마지막에 사용한다는 것을 잊으면 안된다.
+- 마지막으로 마치 연산자처럼 쓸 수 있는 infix funciton
+---
+    fun main() {
+        
+        println(6 multiply 4)
+        
+        println(6.multiply(4))
+        
+    }
+    
+    infix fun Int.multiply(x: Int): Int = this * x
+---
+- 참고로 class 안에서 infix 함수를 선언할 때에는 적용할 클래스가 자기 자신이므로
+---
+    infix fun multiply(x: Int): Int = this * x
+---
+- class 이름은 쓰지 않습니다.
+
+## 중첩클래스와 내부 클래스
 
 
 
