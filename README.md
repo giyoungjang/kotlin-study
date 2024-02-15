@@ -1,6 +1,6 @@
 # kotlin-study
 
-## 변수와 자료형
+## 1. 변수와 자료형
 1. 주석
 ---
     // 자료형 변수
@@ -72,7 +72,7 @@
     }
 ---
 
-## 형변환과 배열
+## 2.형변환과 배열
 1. 형변환
    - 하나의 변수에 지정된 자료형을 호환되는 다른 자료형으로 변경하는 기능
      
@@ -95,7 +95,7 @@
         println(intArr[4])
     }
 
-## 타입추론과 함수
+## 3. 타입추론과 함수
 1. 타입추론
    - 변수나 함수들을 선얼할 때나 연산이 이루어 질 때 자료형을 코드에 명시하지 않아도 코틀린이 자동으로 자료형을 추론해주는 기능
 ---
@@ -124,7 +124,7 @@
     }
     fun add(a: Int, b: Int, c: Int) = a + b + c
 ---
-## 조건문과 비교연산자
+## 4. 조건문과 비교연산자
 1. 조건문
 ---
     fun main() {
@@ -175,7 +175,7 @@
         println(result)
     }
 ---
-## 반복문과 증감연산자
+## 5. 반복문과 증감연산자
 1. 반복문
  - 조건형 반복문 -> 조건이 참인 경우 반복을 유지
  - 범위형 반복문 -> 반복 범위를 정해 반복을 수행
@@ -225,7 +225,7 @@
         }
     }
 
-## 흐름제어와 논리연산자
+## 6. 흐름제어와 논리연산자
 1. 키워드
    - return 반환
    - break 반복문 중간에 정지
@@ -272,7 +272,7 @@
     }
 ---
 
-## 클래스의 기본 구조
+## 7. 클래스의 기본 구조
 ---
     fun main() {
         
@@ -291,7 +291,7 @@
         }
     }
 ---
-## 클래스의 생성자
+## 8. 클래스의 생성자
 1. init
 
 2. 생성자
@@ -319,7 +319,7 @@
     }
 ---
 
-## 클래스의 상속
+## 9. 클래스의 상속
 
 1. 상속
 ---
@@ -357,7 +357,7 @@
         }
     }
 ---
-## 오버라이딩과 추상화
+## 10. 오버라이딩과 추상화
 1. 오버라이딩
 ---
     //오버라이딩
@@ -433,7 +433,7 @@
         }
     }
 ---
-## 기본 프로젝트 구조
+## 11. 기본 프로젝트 구조
 1. 프로젝트 project - 어플레이케이션을 짤 때 관련된 모든 내용을 담는 '큰 틀'이라고 생각하면 된다.
 2. 모듈 module - 프로젝트안에 여러개의 모듈, 직접 만들거나 필요한 기능을 이미 구현해 둔 '라이브러리 모듈'을 가져와 붙이기가 가능
 3. 모듈은 여러개의 파일과 폴더(코드 파일 and 모듈과 관련된 설정 및 리소스 파일)
@@ -445,7 +445,7 @@
     import com.youtube.dimo.base
 ---
 
-## 변수, 함수, 클래스의 접근범위와 접근제한자
+## 12. 변수, 함수, 클래스의 접근범위와 접근제한자
 1. 스코프 scope
 ---
     val a = "패키지 스코프"
@@ -480,7 +480,7 @@
   * internal 은 사용하지 않음
   * 
 
-## 고차함수와 람다함수
+## 13. 고차함수와 람다함수
 1. 고차함수
 2. 람다함수
 
@@ -503,7 +503,7 @@
     }
 ---
 
-## 스코프 함수
+## 14. 스코프 함수
 - 람다함수도 여러 구문의 사용이 가능
 
 <img width="173" alt="스크린샷 2024-02-14 오후 7 57 15" src="https://github.com/giyoungjang/kotlin-study/assets/126555597/02382cbf-aa77-43b2-8d00-b468c1e3c2e0">
@@ -585,7 +585,7 @@
 - let -> run이 main()에서 할당되는걸 대체
 - also -> apply 역시 같은 경우 대체
 
-## 오브젝트
+## 15. 오브젝트
 1. 생성자 없이 객체를 직접 만들어 내는 object
   - Singleton Pattern - 클래스의 인스턴스를 단 하나만 만들어 사용하도록 하는 코딩 아키텍쳐 패턴
 ---
@@ -654,7 +654,7 @@
 - 인스턴스를 공유하기때문에 누적해서 결과를 볼 수 있다.
 
 
-## 익명객체와 옵저버 패턴
+## 16. 익명객체와 옵저버 패턴
 1. 옵저버 패턴
 ---
     fun main() {
@@ -717,7 +717,7 @@
     }
 ---
 
-## 클래스의 다형성
+## 17. 클래스의 다형성
 
 ---
     fun main() {
@@ -759,7 +759,7 @@
 ---
 - is, as down-casting
 
-## 제너릭
+## 18. 제너릭
 - 클래스나 함수에서 사용하는 자료형을 외부에서 지정할 수 있는 기능인 Generic
 
 
@@ -802,7 +802,7 @@
     }
 ---
 
-## 리스트
+## 19. 리스트
 - 데이터를 코드에서 지정한 순서대로 저장해두는 List
 - List<out T> - 생성시에 넣은 객체를 대체, 추가, 삭제 할 수 없음
 - MutableList<T> - 생성시에 넣은 객체를 대체, 추가, 삭제가 가능함
@@ -867,7 +867,7 @@
     
 ---
 
-## 문자열 다루는 법
+## 20, 문자열 다루는 법
 
 - 'String' 이라는 클래스로 문자열을 다루며
 ---
@@ -951,7 +951,7 @@
     false
 ---
 
-## null 값을 처리하는 방법? 동일한지를 확인하는 방법?
+## 21. null 값을 처리하는 방법? 동일한지를 확인하는 방법?
 
 - nullable 변수에서 nul을 처리하는 법과 변수 간의 동일성을 확인하는 방법
 - ?.  : null safe operator
@@ -972,7 +972,7 @@
 
     sample!!.toUpperCase()
 ---
-### 실습
+### 21.1 실습
 ---
     fun main() {
         
@@ -1060,7 +1060,7 @@
     false
 ---
 
-## 함수의 argument 를 다루는 방법과 infix 함수
+## 22. 함수의 argument 를 다루는 방법과 infix 함수
 
 - 함수를 더 다양한 방법으로 사용할 수 있는 여러 기능들
 - overloading - 이것은 '같은 scope 안'에서
@@ -1161,7 +1161,161 @@
 ---
 - class 이름은 쓰지 않습니다.
 
-## 중첩클래스와 내부 클래스
+## 23. 중첩클래스와 내부 클래스
+
+- 중첩 클래스 - 하나의 클래스가 다른 클래스의 기능과 강하게 연관되어 있다는 의미를 전달하긱 위해 만들어진 형식
+           - 외부 클래스의 내용을 공유할 수 없음
+- 내부 클래스 - 혼자서 객체를 만들 수는 없고 외부 클래스의 객체가 있어야만 생성과 사용이 가능한 클래스입니다.
+           - 외부 클래스의 속성과 함수의 사용이 가능
+---
+    fun main() {
+        
+        Outer.Nested().introduce()
+        
+        val outer = Outer()
+        val inner = outer.Inner()
+        
+        inner.introduceInner()
+        inner.introduceOuter()
+        
+        outer.text = "Changed Outer Class"
+        inner.introduceOuter()
+        
+    }
+    
+    class Outer {
+        var text = "Outer Class"
+        
+        class Nested {
+            fun introduce() {
+                println("Nested Class")
+            }
+        }
+        
+        inner class Inner {
+            var text = "Inner Class"
+            
+            fun introduceInner() {
+                println(text)
+            }
+            
+            fun introduceOuter() {
+                println(this@Outer.text)
+            }
+        } 
+    }
+---
+- 중첩 클래스와 내부 클래스는 클래스간의 연계성을 표현하여 코드의 가독성 및 작성 편의성이 올라갈 수 있으므로 적절한 상황에서 사용해야 한다.
+
+
+## Data Class 와 Enum Class
+
+- 특별한 기능이나 형태를 가진 클래스들
+- Data class - 데이터를 다루는 데에 최적화된 class 로 '5가지 기능'을 내부적으로 자동으로 생성해준다.
+        * 내용의 동일성을 판단하는 equals() 의 자동구현
+        * 객체의 내용에서 고유한 코드를 생성하는 hashcode()의 자동구현
+        * 포함된 속성을 보기쉽게 나타내는 toString()의 자동구현
+        * 객체를 복사하여 똑같은 내용의 새 객체를 만드는 copy()의 자동구현
+              ! 객체를 똑같이 복사도 가능하지만 파라미터가 있다면 해당 파라미터로 교체하여 생성함
+        * 속성을 순서대로 반환하는 componentX()의 자동구현
+
+1. Data Class
+---
+
+    fun main() {
+        
+        val a = General("보영", 212)
+        
+        println(a == General("보영", 212))
+        println(a.hashCode())
+        println(a)
+        
+        val b = Data("루다", 306)
+        
+        println(b == Data("루다", 306))
+        println(b.hashCode())
+        println(b)
+        
+        println(b.copy())
+        println(b.copy("아린"))
+        println(b.copy(id = 618))
+        
+    }
+    
+    class General(val name: String, val id: Int)
+    
+    data class Data(val name: String, val id: Int)
+
+---
+    false
+    885284298
+    General@34c45dca
+    true
+    46909878
+    Data(name=루다, id=306)
+    Data(name=루다, id=306)
+    Data(name=아린, id=306)
+    Data(name=루다, id=618)
+---
+    //component 함수
+    fun main() {
+        
+        val list = listOf(Data("보영", 212),
+                         Data("루다", 306),
+                         Data("아린", 618))
+        
+        for((a,b)in list) {
+            println("${a}, ${b}")
+        }
+        
+    }
+    
+    class General(val name: String, val id: Int)
+    
+    data class Data(val name: String, val id: Int)
+---
+    보영, 212
+    루다, 306
+    아린, 618
+---
+
+2. Enum Class
+   - enumerated type - 열거형
+
+---
+    fun main() {
+        
+        var state = State.SING
+        println(state)
+        
+        state = State.SLEEP
+        println(state.isSleeping())
+        
+        state = State.EAT
+        println(state.message)
+        
+    }
+    
+    enum class State(val message: String) {
+        SING("노래를 부릅니다"),
+        EAT("밥을 먹습니다"),
+        SLEEP("잠을 잡니다");
+        
+        // enum 은 선언시에 만든 객체를 이름으로 참조하여 그대로 사용하게 됩니다.
+        fun isSleeping() = this == State.SLEEP 
+        
+    }
+---
+    SING
+    true
+    밥을 먹습니다
+---
+
+
+
+
+
+
 
 
 
