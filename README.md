@@ -481,9 +481,391 @@
   * 
 
 ## 고차함수와 람다함수
+1. 고차함수
+2. 람다함수
+
+---
+    fun main() {
+        
+        b(::a)
+        
+        val c: (String)->Unit = { str -> println("$str 람다함수")}
+        b(c)
+        
+    }
+    
+    fun a (str: String) {
+        println("$str 함수 a")
+    }
+    
+    fun b(function: (String)->Unit){
+        function("b가 호출한")
+    }
+---
+
+## 스코프 함수
+- 람다함수도 여러 구문의 사용이 가능
+
+<img width="173" alt="스크린샷 2024-02-14 오후 7 57 15" src="https://github.com/giyoungjang/kotlin-study/assets/126555597/02382cbf-aa77-43b2-8d00-b468c1e3c2e0">
+
+1. apply - 인스턴스를 생성한 후 변수에 담기 전에 '초기화 과정'을 수행할 때 많이 쓰입니다
+---
+    fun main() {
+       
+        var a = Book("장의 코틀린", 10000).apply {
+            name = "[초특가]" + name
+            discount()
+        }
+        
+    }
+    
+    class Book(var name:String, var price: Int){
+        fun discount() {
+            price -= 2000
+        }
+    }
+---
+2. run
+---
+    fun main() {
+       
+        var a = Book("장의 코틀린", 10000).apply {
+            name = "[초특가]" + name
+            discount()
+        }
+        
+        a.run {
+            println("상품명: ${name}, 가격: ${price}원")
+        }
+        
+    }
+    
+    class Book(var name:String, var price: Int){
+        fun discount() {
+            price -= 2000
+        }
+    }
+---
+    상품명: [초특가]장의 코틀린, 가격: 8000원
+---
+3. with
+
+<img width="521" alt="스크린샷 2024-02-14 오후 9 11 13" src="https://github.com/giyoungjang/kotlin-study/assets/126555597/58f0d31c-c61c-4729-9693-55644a5ff790">
 
 
+4. also / let
+---
+    fun main() {
+       
+        var price = 5000
+        
+        var a = Book("장의 코틀린", 10000).apply {
+            name = "[초특가]" + name
+            discount()
+        }
+        
+        a.run {
+            println("상품명: ${name}, 가격: ${price}원")
+        }
+        
+        a.let{
+            println("상품명: ${it.name}, 가격: ${it.price}원")
+        }
+    }
+    
+    class Book(var name:String, var price: Int){
+        fun discount() {
+            price -= 2000
+        }
+    }
+---
+    상품명: [초특가]장의 코틀린, 가격: 5000원
+    상품명: [초특가]장의 코틀린, 가격: 8000원
+---
+- let -> run이 main()에서 할당되는걸 대체
+- also -> apply 역시 같은 경우 대체
 
+## 오브젝트
+1. 생성자 없이 객체를 직접 만들어 내는 object
+  - Singleton Pattern - 클래스의 인스턴스를 단 하나만 만들어 사용하도록 하는 코딩 아키텍쳐 패턴
+---
+    fun main() {
+        
+        println(Counter.count)
+        
+        Counter.countUp()
+        Counter.countUp()
+        
+        println(Counter.count)
+        
+        Counter.clear()
+        println(Counter.count)
+    }
+    
+    object Counter {
+        var count = 0
+        
+        fun countUp() {
+            count++
+        }
+        fun clear() {
+            count = 0
+        }
+    }
+---
+2. Companion Object
+   - Static 멤버 - 클래스 내부에서 별도의 영역에 고정적으로 존재하여 인스턴스를 생성하지 않아도 공용으로 사용가능한 속성이나 함수
+
+---
+fun main() {
+    var a = FoodPoll("짜장")
+    var b = FoodPoll("짬뽕")
+    
+    a.vote()
+    a.vote()
+    
+    b.vote()
+    b.vote()
+    b.vote()
+    
+    println("${a.name}:${a.count}")
+    println("${b.name}:${b.count}")
+    println("총계:${FoodPoll.total}")
+    
+}
+
+class FoodPoll(val name: String){
+    companion object {
+        var total = 0
+    }
+    
+    var count = 0
+    
+    fun vote(){
+        total++
+        count++
+    }
+}
+---
+    짜장:2
+    짬뽕:3
+    총계:5
+---
+- 인스턴스를 공유하기때문에 누적해서 결과를 볼 수 있다.
+
+
+## 익명객체와 옵저버 패턴
+1. 옵저버 패턴
+---
+    fun main() {
+        
+        EventPrinter().start()
+        
+    }
+    
+    interface EventListener {
+        fun onEvent(count: Int)
+    }
+    
+    class Counter(var listener: EventListener){
+        fun count(){
+            for(i in 1..100){
+                if(i % 5 == 0) listener.onEvent(i)
+            }
+        }
+    }
+    
+    class EventPrinter: EventListener {
+        override fun onEvent(count: Int){
+            print("${count}-")
+        }
+        fun start(){
+            val counter = Counter(this)
+            counter.count()
+        }
+    }
+---
+2. 익명객체
+---
+    fun main() {
+        
+        EventPrinter().start()
+        
+    }
+    
+    interface EventListener {
+        fun onEvent(count: Int)
+    }
+    
+    class Counter(var listener: EventListener){
+        fun count(){
+            for(i in 1..100){
+                if(i % 5 == 0) listener.onEvent(i)
+            }
+        }
+    }
+    
+    class EventPrinter {
+        fun start() {
+            val counter = Counter(object: EventListener{
+                override fun onEvent(count: Int){
+                    print("${count}-")
+                }
+            })
+            counter.count()
+        }
+    }
+---
+
+## 클래스의 다형성
+
+---
+    fun main() {
+        
+        var a = Drink()
+        a.drink()
+        
+        var b: Drink = Cola()
+        b.drink()
+        
+        if(b is Cola){       // is 는 변수가 자료형에 호환되는지를 먼저 '체크한 후 변환' 해주는 캐스팅 연산자로 {} 안에서만 b가 Cola 가 됨
+            b.washDishes()
+        }
+        
+        var c = b as Cola     //as 로 Cola로 변환한 결과를 반환받아야 변수에 넣을 수 있다.
+        c.washDishes()
+        b.washDishes()
+    }
+    
+    open class Drink {
+        var name = "음료"
+        
+        open fun drink() {
+            println("${name}를 마십니다")
+        }
+    }
+    
+    class Cola: Drink() {     // Cola 에 Drink를 인스턴스로 담았으므로 override한 함수가 실행이 됨
+        var type = "콜라"
+        
+        override fun drink() {
+            println("${name}중에 ${type}를 마십니다")
+        }
+        
+        fun washDishes() {
+            println("${type}로 설거지를 합니다")
+        }
+    }
+---
+- is, as down-casting
+
+## 제너릭
+- 클래스나 함수에서 사용하는 자료형을 외부에서 지정할 수 있는 기능인 Generic
+
+
+---
+    fun main() {
+        
+        UsingGeneric(A()).doShouting()
+        UsingGeneric(B()).doShouting()
+        UsingGeneric(C()).doShouting()
+        
+        doShouting(B())
+    }
+    
+    fun <T: A> doShouting(t:T){    // 캐스팅 없이 B의 객체 그대로 함수에서 사용
+        t.shout()
+    }
+    
+    open class A{
+        open fun shout() {
+            println("A가 소리칩니다")
+        }
+    }
+    
+    class B : A(){
+        override fun shout() {
+            println("B가 소리칩니다")
+        }
+    }
+    
+    class C : A() {
+        override fun shout() {
+            println("C가 소리칩니다")
+        }
+    }
+    
+    class UsingGeneric<T: A> (val t: T) {
+        fun doShouting() {
+            t.shout()
+        }
+    }
+---
+
+## 리스트
+- 데이터를 코드에서 지정한 순서대로 저장해두는 List
+- List<out T> - 생성시에 넣은 객체를 대체, 추가, 삭제 할 수 없음
+- MutableList<T> - 생성시에 넣은 객체를 대체, 추가, 삭제가 가능함
+
+---
+    //형태
+    
+    listOf(1,2,3)
+    mutableListOf("A","B","C")
+    
+    // 요소의 추가
+    
+    add(데이터)
+    add(인덱스, 데이터)
+    
+    //삭제
+    
+    remove(데이터)
+    removeAt(인덱스)
+
+    // 무작위 섞기
+    
+    shuffle()
+    
+    //정렬
+    
+    sort()
+---
+    list[인덱스] = 데이터   //특정위치의 요소를 다른 요소로 대체도 가능
+---
+
+    fun main() {
+    
+        var a = listOf("사과", "딸기", "배")
+        println(a[1])
+        
+        for(fruit in a){
+            print("${fruit}:")
+        }
+        
+        println()
+        
+        val b = mutableListOf(6,3,1)
+        println(b)
+        
+        b.add(4)
+        println(b)
+        
+        b.add(2,8)
+        println(b)
+        
+        b.removeAt(1)
+        println(b)
+        
+        b.shuffle()
+        println(b)
+        
+        b.sort()
+        println(b)
+        
+    }
+    
+---
 
 
 
