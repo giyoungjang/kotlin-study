@@ -1208,7 +1208,7 @@
 - 중첩 클래스와 내부 클래스는 클래스간의 연계성을 표현하여 코드의 가독성 및 작성 편의성이 올라갈 수 있으므로 적절한 상황에서 사용해야 한다.
 
 
-## Data Class 와 Enum Class
+## 24. Data Class 와 Enum Class
 
 - 특별한 기능이나 형태를 가진 클래스들
 - Data class - 데이터를 다루는 데에 최적화된 class 로 '5가지 기능'을 내부적으로 자동으로 생성해준다.
@@ -1311,10 +1311,645 @@
     밥을 먹습니다
 ---
 
+## 25. 컬렉션 2탄, Set과 Map
+
+- set - list 와 달리 순서가 정렬되지 않으며 중복이 허용되지 않는 컬렉션입니다.
+      - 따라서, 인덱스 위치를 지정하여 객체를 참조할 수는 없으며
+---
+    // sampleSet 에 디모가 있는지 알려줘
+    sampleSet.contains("디모")
+---
+- 샘플셋에 존재하는 지를 확인하는 식으로만 사용합니다.
+- set<outT>
+- MutableSet<T>
+
+1. set
+---
+    fun main() {
+    	
+        val a = mutableSetOf("귤","바나나","키위")
+        
+        for(item in a)
+        {
+            println("${item}")
+        }
+        
+        a.add("자몽")  //추가
+        println(a)
+        
+        a.remove("바나나")  //삭제
+        println(a)
+        
+        println(a.contains("귤"))
+        
+    }
+---
+    귤
+    바나나
+    키위
+    [귤, 바나나, 키위, 자몽]
+    [귤, 키위, 자몽]
+    true
+---
+2. map
+    - 객체를 넣을ㄷ 때 그 객체를 찾아낼 수 있는 key를 쌍으로 넣어주는 컬렉션 입니다.
+    - key - 객체를 찾기위한 값
+    - value - key와 연결된 객체
+    - 이러한 구조로 객체의 위치가 아닌
+---
+    // 디모라는 key에 연결된 객체를 알려줘
+    sampleMap["디모]
+---
+   - 또한 같은 key에 다른 객체를 넣으면 기존의 객체가 대체되니 주의해서 사용하세요.
+   - Map<K, out v>
+   - MutableMap<K, V>
+---
+    fun main() {
+    	
+        val a = mutableMapOf("레드벨벳" to "음파음파",
+                            "트와이스" to "FANCY",
+                            "ITZY" to "ICY")
+        for (entry in a)
+        {
+            println("${entry.key}:${entry.value}")
+        }
+        
+        a.put("오마이걸", "변지")
+        println(a)
+        
+        a.remove("ITZY")
+        println(a)
+        
+        println(a["레드벨벳"])
+        
+    }
+---
+    레드벨벳:음파음파
+    트와이스:FANCY
+    ITZY:ICY
+    {레드벨벳=음파음파, 트와이스=FANCY, ITZY=ICY, 오마이걸=변지}
+    {레드벨벳=음파음파, 트와이스=FANCY, 오마이걸=변지}
+    음파음파
+---
+
+## 26. 컬렉션 함수, 첫번째
+
+- 컬렉션 함수 - list나 set, map 과 같은 컬렉션 또는 배열에 일반 함수 또는 람다 함수 형태를 사용하여
+           - for 문 없이도 아이템을 순회하며 참조하거나 조건을 걸고, 구조의 변경까지 가능한 여러가지 함수.
+--- 
+    // it을 순서대로 참조가 가능
+    collection.forEach {
+        println(it)
+    }
+---
+    // filter 는 조건을 걸어면 조건에 맞는 객체만 뽑아준다.
+    collection.filter {
+        it < 4
+    }
+---
+    // map 은 객체안에 수식을 계산하여 출력
+    collection.map {
+        it * 2
+    }
+---
+    collection.any { it == 0 }      // 하나라도 저건에 맞으면 true
+    collection.all { it == 0 }      // 모두 조건에 맞으면 true
+    collection.none { it == 0 }     // 하나도 조건에 맞지 않으면 true
+---
+    collection.first()       // 컬렉션의 첫번째 아이템 반환  find 로 대체가능
+    collection.first{ it > 3 } // 조건에 맞는 첫번째 아이템을 반환
+    collection.last()        // 조건에 맞는 마지막 아이템을 반환  findLast
+
+    //객체가 없는 경우
+    firstOrNull
+    lastOrNull
+---
+    collection.count()    // 컬렉션의 모든 아이템의 개수 반환
+    collection.count{ it > 7 }
+
+---
+    fun main() {
+    	
+    	val nameList = listOf("박수영","김지수", "김다현", "신유나", "김지우")
+        
+        nameList.forEach{ print(it + " ")}
+        println()
+        
+        println(nameList.filter{it.startsWith("김")})
+        
+        println(nameList.map{"이름:"+it})
+        
+        println(nameList.any{ it == "김지연" })
+        println(nameList.all{it.length == 3})
+        println(nameList.none{it.startsWith("이")})
+        
+        println(nameList.first{it.startsWith("김")})
+        println(nameList.last{it.startsWith("김")})
+        println(nameList.count{it.contains("지")})
+    }
+---
+    박수영 김지수 김다현 신유나 김지우 
+    [김지수, 김다현, 김지우]
+    [이름:박수영, 이름:김지수, 이름:김다현, 이름:신유나, 이름:김지우]
+    false
+    true
+    true
+    김지수
+    김지우
+    2
+---
+
+## 27. 컬렉션 함수, 두번째
+
+---
+    // 아이템에서 key를 추출하여 map 으로 변환하는 함수
+    collection.associateBy { it.name }
+---
+
+<img width="565" alt="스크린샷 2024-02-16 오후 12 28 21" src="https://github.com/giyoungjang/kotlin-study/assets/126555597/75f75ff4-cf87-4751-8f7a-74a0b66eb1f0">
+
+<img width="477" alt="스크린샷 2024-02-16 오후 12 28 42" src="https://github.com/giyoungjang/kotlin-study/assets/126555597/1b887669-e962-4cf6-8118-f1f6d1507a09">
 
 
+---
+    // key가 같은 아이템끼리 배열로 묶어 map으로 만드는 함수
+    collection.groupBy { it.birthYear }
+---
+    
+<img width="477" alt="스크린샷 2024-02-16 오후 12 29 39" src="https://github.com/giyoungjang/kotlin-study/assets/126555597/ca073bcc-1e31-40f4-a3db-91da7149d9ff">
+
+---
+    // 아이템에 조건을 걸어 두개의 컬렉션으로 나누어 줌
+    collection.partition { it.birthYear > 2002 }
+---
+
+<img width="686" alt="스크린샷 2024-02-16 오후 12 33 05" src="https://github.com/giyoungjang/kotlin-study/assets/126555597/9122aad4-d685-4037-9dd4-0294d34dab77">
+
+---
+    
+    fun main() {
+    	
+    	data class Person(val name: String, val birthYear: Int)
+        
+        val personList = listOf(Person("유나",1992),
+                               Person("조이",1996),
+                               Person("츄",1999),
+                               Person("유나",2003))
+        
+        println(personList.associateBy{ it.birthYear })
+        println(personList.groupBy{ it.name })
+        
+        val (over98, under98) = personList.partition { it.birthYear > 1998}
+        
+        println(over98)
+        println(under98)
+        
+    }
+
+---
+
+    {1992=Person(name=유나, birthYear=1992), 1996=Person(name=조이, birthYear=1996), 1999=Person(name=츄, birthYear=1999), 2003=Person(name=유나, birthYear=2003)}
+    {유나=[Person(name=유나, birthYear=1992), Person(name=유나, birthYear=2003)], 조이=[Person(name=조이, birthYear=1996)], 츄=[Person(name=츄, birthYear=1999)]}
+    [Person(name=츄, birthYear=1999), Person(name=유나, birthYear=2003)]
+    [Person(name=유나, birthYear=1992), Person(name=조이, birthYear=1996)]
+
+---
+
+    // 아이템마다 만들어진 컬렉션을 합쳐서 반환하는 함수
+    collection.flatMap{}
+    collection.flatMap{ listOf(it*3, it+3) }
+
+    // 인덱스 위치에 아이템이 있으면 아이템을 반환하고 아닌 경우 지정한 기본값을 반환하는 함수
+    collection.getOrElse(){}
+    collection.getOrElse(1){50}
+
+    // 컬렉션 두 개의 아이템을 1:1로 매칭하여 새 컬렉션을 만들어 줌
+    collectionA zip collectionb
+
+---
+
+    fun main() {
+    	
+    	val numbers = listOf(-3, 7, 2, -10, 1)
+        
+        println(numbers.flatMap{listOf(it*10, it+10)})
+        
+        println(numbers.getOrElse(1){50})
+        println(numbers.getOrElse(10){50})
+        
+        val names = listOf("A", "B", "C", "D")
+        
+        println(names zip numbers)
+        
+    }
+
+---
+
+    [-30, 7, 70, 17, 20, 12, -100, 0, 10, 11]
+    7
+    50
+    [(A, -3), (B, 7), (C, 2), (D, -10)]
+
+---
+
+## 28. 변수의 고급 기술. 상수, lateinit, lazy
+
+1. 상수
+---
+    fun main() {
+    	
+    	val foodCourt = FoodCourt()
+        
+        foodCourt.searchPrice(FoodCourt.FOOD_CREAM_PASTA)
+        foodCourt.searchPrice(FoodCourt.FOOD_STEAK)
+        foodCourt.searchPrice(FoodCourt.FOOD_PIZZA)
+    }
+    
+    class FoodCourt {
+        fun searchPrice(foodName: String){
+            val price = when(foodName)
+            {
+                FOOD_CREAM_PASTA -> 13000
+                FOOD_STEAK ->25000
+                FOOD_PIZZA -> 15000
+                else -> 0
+            }
+            
+            println("${foodName}의 가격은 ${price}원 입니다")
+        }
+        
+        companion object {
+            const val FOOD_CREAM_PASTA = "크림파스타"
+            const val FOOD_STEAK = "스테이크"
+            const val FOOD_PIZZA = "피자"
+        }
+        
+    }
+---
+    크림파스타의 가격은 13000원 입니다
+    스테이크의 가격은 25000원 입니다
+    피자의 가격은 15000원 입니다
+---
+- 기능적으로는 굳이 왜 변수를 사용하지 않고 상수를 별도로 사용하는지
+- 이는 변수의 경우 런타임시 객체를 생성하는데 시간이 더 소요되어 성능의 하락이 있기 때문입니다.
+- 따라서 늘 고정적으로 사용할 값은 상수를 통해 객체의 생성없이 메모리에 값을 고정하여 사용함으로서
+- 성능을 향상시킬 수 있다는 장점이 있습니다.
+
+2. 늦은 초기화
+- 코틀린에서는 변수를 선언할 때
+---
+    // 자료형만 지정해두고 객체는 나중에 할당하면 안될까?
+    var a: Int
+---
+- 이렇게 안됩니다.
+- 경우의 따라서는 변수에 객체를 할당하는 것을 선언과 동시에 할 수 없을 때도 있습니다.
+---
+    lateinit var a: Int
+---
+- 일단 변수만 선언하고 초기값의 할당은 나중에 할 수 있도록 하는 키워드입니다.
+
+<img width="513" alt="스크린샷 2024-02-16 오후 1 58 59" src="https://github.com/giyoungjang/kotlin-study/assets/126555597/278bf8f6-b8fd-4529-89d7-c82fa1d9feef">
+
+- 또한 lateinit 변수의 '초기화'를 하였는지 여부를 확인할 떄는
+---
+    ::aisInitialized
+---
+- 초기화가 되었는지 확인하여 사용할 수 있으므로 오류를 막을 수 있습니다.
+---
+
+    fun main() {
+        
+        val a = LateInitSample()
+        
+        println(a.getLateInitText())
+        a.text = "새로 할당한 값"
+        println(a.getLateInitText())
+        
+    }
+    
+    class LateInitSample {
+        lateinit var text: String
+        
+        fun getLateInitText():String{
+            if(::text.isInitialized) {
+                return text
+            } else {
+                return "기본값"
+            }
+        }
+    }
+    
+---
+    기본값
+    새로 할당한 값
+---
+
+- 마지막으로 변수를 사용하는 시점까지 초기화를 자동으로 늦춰주는
+- 지연 대리자 속성 ( lazy delegate properties)
+- 이는 lateinit과 달리
+---
+    val a: Int by lazy{7}
+---
+- 코드에서는 선언시 즉시 객체를 생성 및 할당하여 변수를 초기화하는 형태를 갖고 있지만 실제 실행시에는
+---
+    val a: Int by lazy {7}
+    ...
+    println(a)  // 이 시점에 7로 초기화 됨
+---
+- 코드의 실행시간을 최적화 할 수 있는 코드입니다.
+- 참고로 람다함수로 초기화가 진행되므로
+---
+    val a: Int by lazy {
+        println("initializing")
+        7
+    }   // 이렇게 해도 어차피 값은 7이 됨
+---
+    fun main() {
+    	
+        val number: Int by lazy {
+            println("초기화를 합니다")
+            7
+        }
+        
+        println("코드를 시작합니다")
+        println(number)
+        println(number)
+    }
+---
+- 상수, 늦은 초기화, 초기화의 지연은 상황에 따라 변수를 사용하는 방법을 조금 더 세세하게 조절할 수 있다는 장점이 있습니다.
 
 
+## 29. 비트연산
+
+- 비트연산은 정수형 변수를 사람이 연산하는 10진법 대신 2진법인 비트단위로 연산할 수 있는 기능입니다.
+- 정수형의 값을 비트단위로 나누어 데이터를 좀 더 작은 단위로 담아 경제성을 높이기 위한 용도로 사용됩니다.
+- 00001001001010000100 을 00001 0101010001010100 이렇게 변수하나에 여러개의 값을 담아 사용할 수 있는 것이죠.
+- 다만 비트연산을 사용하는 부하도 무시할 수 없으므로
+- 주로 플래그 값을 처리하거나 네트워크 등에서 프로토콜의 데이터 양을 줄이기 위해 자주 사용됩니다.
+- 참고로 코틀린은 모든 정수형이 부호를 포함하므로 최상위 비트는 양수인지 음수인 부호비트로 사용되기때문에
+- 이 부분에는 데이터를 담지 않는 것이 좋습니다.
+
+- 비트를 밀어주는 ! bitwise shift operators
+- shl ( shift left) 부호비트를 제외한 모든 비트를 좌측으로 밀어주는 기능
+- shr ( shift right) 부호비트를 제외한 모든 비트를 우측으로 밀어주는 기능
+- ushr ( unsigned shift right ) 부호비트를 포함하여 모든 비트를 우측으로 밀어주는 기능
+
+- 비트를 조작하는 ! bitwise operators
+- 1010 and 0110 양쪽을 비교하여 비트가 둘다 1인 자리만 1로 반환함 -> 0010
+- 1010 or 0110 -> 1110
+- 1010 xor 0110 -> 1100
+
+- and 연산자는 그 특성을 이용하여 두 가지 기능으로 사용합니다.
+
+<img width="268" alt="스크린샷 2024-02-16 오후 2 36 00" src="https://github.com/giyoungjang/kotlin-study/assets/126555597/879b6779-26dd-417e-b8a4-45327e39eee4">  <img width="345" alt="스크린샷 2024-02-16 오후 2 36 32" src="https://github.com/giyoungjang/kotlin-study/assets/126555597/66d1096a-553c-467a-875d-ab5e77e7be64">
+
+- or 연산자는 반대로 비트의 set 연산, 즉 비트 값을 1로 설정하고 싶을 때 사용합니다.
+
+<img width="261" alt="스크린샷 2024-02-16 오후 2 38 00" src="https://github.com/giyoungjang/kotlin-study/assets/126555597/fe7d60de-f236-468b-8a23-7d100a95fed9">
+
+- xor 연산자는 
+
+<img width="379" alt="스크린샷 2024-02-16 오후 2 38 46" src="https://github.com/giyoungjang/kotlin-study/assets/126555597/ef657b75-6ab6-475d-b2ab-0b048ecc5202">
+
+- 비트를 반전하는 ! inv()
+- 이것은 비트를 모두 반전시키는 역할을 합니다.
+
+---
+    fun main() {
+        
+        var bitData: Int = 0b10000
+        
+        bitData = bitData or(1 shl 2)
+        println(bitData.toString(2))
+        
+        var result = bitData and(1 shl 4)
+        println(result.toString(2))
+        
+        println(result shr 4)
+        
+        bitData = bitData and ((1 shl 4).inv())
+        println(bitData.toString(2))
+        
+        println((bitData xor(0b10100)).toString(2))
+    
+    }
+---
+    10100
+    10000
+    1
+    100
+    10000
+---
+- 비트 연산은 앞서 말했듯이 아주 제한적인 경우에 사용되지만 반드시 알아야 할 중요한 연산이므로 기억해야합니다.
+
+## 30. 코루틴을 통한 비동기 처리
+
+- '비동기'로 여러개의 루틴을 동시에 처리할 수 있는 법
+- 코루틴은 제어범위 및 실행범위를 지정할 수 있습니다.
+- 이를 코루틴의 Scope
+- GlobalScope - 프로그램 어디서나 제어, 동작이 가능한 기본 범위
+- CoroutineScope - 특정한 목적의 Dispatcher 를 지정하여 제어 및 동작이 가능한 범위
+
+- Coroutine의 dispatcher는
+- CoroutineScope 를 만들 때 적용가능한 Dispatcher
+- Dispatchers.Default - 기본적인 백그라운드동작
+- Dispatchers.IO - I/O에 최적화 된 동작
+- Dispatchers.Main - 메인(UI) 스레드에서 동작
+- 이러한 Dispatcher들은 모든 플랫폼에서 지원되지는 않으니 지원되는 플랫폼에 따라서 사용하셔야 합니다.
+
+- 코루틴은 이러한 Scope 에서 제어되도록 생성될 수 있는데요.
+---
+    val scope = CoroutineScope(Dispatcher.Defaunt)
+    val coroutineA = scope.launch{}
+    val coroutineB = scope.async{}
+---
+- launch 와 async 의 차이는 반환값이 있는지의 여부
+- launch - 반환값이 없는 Job 객체
+- async - 반환값이 있는 Deffered 객체
+
+
+---
+    import kotlinx.coroutines.*
+    
+    fun main() {
+        
+        val scope = GlobalScope
+        
+        scope.launch {
+            for(i in 1..5)
+            {
+                println(i)
+            }
+        }
+    
+    }
+---
+- 결과값이 나오지 않습니다.
+- 코루틴은 제어되는 스코프 또는 프로그램 전체가 종료되면 함께 종료되기 때문에
+- 코루틴이 끝까지 실행되는 것을 보장하려면 일정한 범위에서 코루틴이 모두 실행될 때까지 잠시 기다려주어야 합니다.
+
+- 우리가 테스트하는 루틴의 경우 main()함수 단 하나이기 때문에 프로세스가 거의 '실행 즉시 종료'되므로
+- 코루틴도 동작되지 못하는 것입니다.
+
+- 이럴 때는
+---
+    runBlocking {
+        launch{}
+        async{}
+    }
+---
+- 이렇게 생성하면 코루틴이 종료될 때까지 메인 루틴을 잠시 대기시켜 줍니다.
+- 주의할 점은
+- 안드로이드에서는 메인 스레드에서 runBlocking 을 걸어주면 일정 시간 이상 응답이 없는 경우
+- ANR ( Applicatin Not Responding : 응답 없음 오류 ) 이 발생하며 앱이 강제 종료된다는 점을 유의하세요.
+---
+    import kotlinx.coroutines.*
+    
+    fun main() {
+        
+        runBlocking {
+            launch {
+                for (i in 1..5)
+                {
+                    print(i)
+                }
+            }
+        }
+    }
+---
+- 루틴의 대기를 위한 추가적인 함수들도 있는데요.
+- 바로 delay(), join(), await()
+---
+    // milisecond 단위로 루틴을 잠시 대기시키는 함수
+    delay(milisecond: Long)
+
+    // Job의 실행이 끝날때까지 대기하는 함수 
+    Job.join()
+
+    // Defferred 의 실행이 끝날때까지 대기하는 함수
+    Deferred.await()
+
+    // Deferred 의 결과도 반환함
+    await()
+---
+- 세 함수는 코루틴 내부 또는 runBlocking {}과 같은 루틴의 대기가 가능한 구문 안에서만 동작이 가능합니다.
+
+---
+
+    import kotlinx.coroutines.*
+    
+    fun main() {
+        
+        runBlocking {
+            val a = launch {
+                for (i in 1..5)
+                {
+                    println(i)
+                    delay(10)
+                }
+            }
+            
+            val b = async {
+                "async 종료"
+            }
+            
+            println("async 대기")
+            println(b.await())
+            
+            println("launch 대기")
+            a.join()
+            println("launch 종료")
+        }
+    }
+
+---
+    async 대기
+    1
+    2
+    async 종료
+    launch 대기
+    3
+    4
+    5
+    launch 종료
+---
+
+- 코루틴 실행 도중에 중단하는 방법도 알려드리겠습니다.
+- cancel()
+- 코루틴에 cancel()을 걸어주면 다음 두 가지 조건이 발생하며 코룬틴을 중단시킬 수 있습니다.
+- - 1. 코루틴 내부의 delay() 함수 또는 yield() 함수가 사용된 위치까지 수행된 뒤 종료됨
+    2. cancel() 로 인해 속성인 isActive가 false가 되므로 이를 확인하여 수동으로 종료함
+---
+    import kotlinx.coroutines.*
+    
+    fun main() {
+        
+        runBlocking {
+            val a = launch {
+                for (i in 1..5)
+                {
+                    println(i)
+                    delay(10)
+                }
+            }
+            
+            val b = async {
+                "async 종료"
+            }
+            
+            println("async 대기")
+            println(b.await())
+            
+            println("launch 취소")
+            a.cancel()
+            println("launch 종료")
+        }
+    }
+---
+    async 대기
+    1
+    async 종료
+    launch 취소
+    launch 종료
+---
+
+- 마지막으로 제한시간 내에 수행되면 결과값을 아닌 경우 null 을 반환하는
+- withTimeoutOrNull()
+---
+    withTimeoutOrNull(50){
+      for(i in 1..1000) {
+        println(i)
+        delay(10)
+      }
+      "Finish"
+    }
+---
+- 이 함수도 join() 이나 await() 처럼 blocking 함수라는 점도 기억하세요
+---
+    import kotlinx.coroutines.*
+    
+    fun main() {
+        
+        runBlocking {
+            var result = withTimeoutOrNull(50) {
+                for(i in 1..10) {
+                    println(i)
+                    delay(10)
+                }
+                "Finish"
+            }
+            
+            println(result)
+        }
+        
+        
+    }
+---
+    1
+    2
+    3
+    null
+---
 
 
 
