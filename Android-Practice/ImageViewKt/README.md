@@ -25,3 +25,6 @@ toast 를 통해서 '버튼이 클릭 되었습니다' 같은 호출을 생성�
         }
     }
 ---
+
+
+<img width="312" alt="스크린샷 2024-02-21 오후 2 25 13" src="https://github.com/giyoungjang/kotlin-study/assets/126555597/3e13d315-d667-43dc-a154-bbfac0e96aa2">
