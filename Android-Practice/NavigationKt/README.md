@@ -7,7 +7,8 @@
 
 
 --- 
-후덜덜... 어렵다... 
+후덜덜... 어렵다...  난 아직 처음이니까 이것저것 사용해봐야 나중에 다른사람 라이브러리를 사용했을 떄 커스텀마이징을 할 수 있단 생각 으로 열심히 따라해보고 있다... 오류도 찾아가며... 자료가 많은듯 없는듯 찾기가 매우 어렵다. 구글링 방식이 잘못되었나보다.
+kotlin textview change text 이런 식으로 구글링을 해왔는데 무언가 많은 코드들이 나와 어렵다고 느낀다. 계속 자주 보면 될 듯 싶다. 그래도 해본건 다른 코드들 보면 읽히기 시작했다.
 
 ---
     lass MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
