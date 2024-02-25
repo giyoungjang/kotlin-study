@@ -259,17 +259,328 @@ if 문을 활용하여 2로 나눈 나머지값이 0 일때와 아닐때로 나�
 
 ---
 
+## 12. 문자 리스트를 문자열로 변환하기
+
+### 12.1 문제
+
+<img width="332" alt="스크린샷 2024-02-25 오후 7 05 41" src="https://github.com/giyoungjang/kotlin-study/assets/126555597/249b1984-32d3-4b9d-8e1c-26c07c3c1068">
+
+
+## 12.2 답
+---
+
+    class Solution {
+        fun solution(arr: Array<String>): String = arr.joinToString("")
+        
+    }
+
+---
+
+## 13. 문자열 곱하기
 
 
 
+### 13.1 문제
+
+<img width="425" alt="스크린샷 2024-02-25 오후 7 15 34" src="https://github.com/giyoungjang/kotlin-study/assets/126555597/49872b25-2967-4cd4-9526-1e6cd5985909">
+
+### 13.2 답
+---
+    
+    class Solution {
+        fun solution(my_string: String, k: Int): String {
+            val sb = StringBuilder()
+            repeat(k){
+                sb.append(my_string)
+            }
+            return sb.toString()
+        }
+    }
+
+---
+
+## 14. 더 크게 합치기
+
+### 14.1 문제
+
+<img width="423" alt="스크린샷 2024-02-25 오후 7 19 53" src="https://github.com/giyoungjang/kotlin-study/assets/126555597/e8455847-f670-4242-8449-92cc3034d12d">
+
+### 14.2 답
+---
+
+    class Solution {
+        fun solution(a: Int, b: Int): Int {
+            val first = "$a$b"
+            val second = "$b$a"
+            
+            return if (first.toInt() > second.toInt() || first.toInt() == second.toInt()) {
+                first.toInt()
+            } else {
+                second.toInt()
+            }
+        }
+    }
+
+--
+
+## 15. 두 수의 연산값 비교하기
+
+### 15.1 문제
+
+<img width="317" alt="스크린샷 2024-02-25 오후 7 42 34" src="https://github.com/giyoungjang/kotlin-study/assets/126555597/980013cf-a785-479d-8eaf-2ba3a065cbcc">
+
+### 15.2 답
+---
+
+    class Solution {
+        fun solution(a: Int, b: Int): Int {
+            val first = "$a$b"
+            val second = "${2 * a * b}"
+            return if (first.toInt() > second.toInt() || first.toInt() == second.toInt()) {
+                first.toInt()
+            } else {
+                second.toInt()
+            }
+        }
+    }
+
+---
+
+## 16. n의 배수
+
+### 16.1 문제
+
+<img width="441" alt="스크린샷 2024-02-25 오후 8 04 02" src="https://github.com/giyoungjang/kotlin-study/assets/126555597/5ab2101d-62ab-4242-90ee-f6b60b150150">
+
+### 16.2 답
+---
+
+    class Solution {
+        fun solution(num: Int, n: Int): Int = if (num % n == 0) 1 else 0
+    }
+
+---
+
+## 17. 공배수
+
+### 17.1 문제
+
+<img width="387" alt="스크린샷 2024-02-25 오후 8 20 44" src="https://github.com/giyoungjang/kotlin-study/assets/126555597/1b4b1fc8-42ce-414f-a171-391c4b6a41da">
+
+### 17.2 답
+---
+
+class Solution {
+    fun solution(number: Int, n: Int, m: Int): Int = if (number % n == 0 && number % m == 0) 1 else 0
+}
+
+---
+
+## 18. 홀짝에 따라 다른 값 반환하기
+
+### 18.1 문제
+
+<img width="530" alt="스크린샷 2024-02-25 오후 8 27 28" src="https://github.com/giyoungjang/kotlin-study/assets/126555597/cfecd97a-4257-49a0-8bc1-3049e6d6a143">
+
+### 18.2 답
+---
+
+    class Solution {
+        fun solution(n: Int): Int {
+            var a = 0
+            for (i in n downTo 1 step 2) {
+                a += if (n % 2 == 1) {
+                    i
+                } else {
+                    (i * i)
+                }
+            }
+            return a
+        }
+    }
+
+---
+
+## 19. 조건 문자열
+
+### 19.1 문제
+
+<img width="408" alt="스크린샷 2024-02-25 오후 8 55 56" src="https://github.com/giyoungjang/kotlin-study/assets/126555597/5c08bff4-dccf-44d7-9530-7bcbc908d0e5">
+
+### 19.2 답
+---
+    
+    class Solution {
+        fun solution(ineq: String, eq: String, n: Int, m: Int): Int = when {
+            ineq == "<" && eq == "=" -> if (n <= m) 1 else 0
+            ineq == ">" && eq == "=" -> if (n >= m) 1 else 0
+            ineq == "<" && eq == "!" -> if (n < m) 1 else 0
+            ineq == ">" && eq == "!" -> if (n > m) 1 else 0
+            else -> {0}
+        }
+    }
+
+---
+
+## 20. flag에 따라 다른 값 반환하기
+
+### 20.1 문제
+
+<img width="502" alt="스크린샷 2024-02-25 오후 9 24 13" src="https://github.com/giyoungjang/kotlin-study/assets/126555597/35c6b937-81bf-4baa-9b37-48878b76eec3">
+
+### 20.2 답
+---
+
+    class Solution {
+        fun solution(a: Int, b: Int, flag: Boolean): Int = if (flag) {
+            a + b
+        } else {
+            a - b
+        }
+    }
+
+---
+
+## 21. 
+
+### 21.1 문제
 
 
 
+### 21.2 답
+---
 
 
 
+---
+
+## 22. 
+
+### 22.1 문제
 
 
 
+### 22.2 답
+---
 
+
+
+---
+
+## 23. 
+
+### 23.1 문제
+
+
+
+### 23.2 답
+---
+
+
+
+---
+
+## 24. 
+
+### 24.1 문제
+
+
+
+### 24.2 답
+---
+
+
+
+---
+
+## 25. 
+
+### 25.1 문제
+
+
+
+### 25.2 답
+---
+
+
+
+---
+
+## 26. 
+
+### 26.1 문제
+
+
+
+### 26.2 답
+---
+
+
+
+---
+
+## 27. 
+
+### 27.1 문제
+
+
+
+### 27.2 답
+---
+
+
+
+---
+
+## 28. 
+
+### 28.1 문제
+
+
+
+### 28.2 답
+---
+
+
+
+---
+
+## 39. 
+
+### 39.1 문제
+
+
+
+### 39.2 답
+---
+
+
+
+---
+
+## 40. 
+
+### 40.1 문제
+
+
+
+### 40.2 답
+---
+
+
+
+---
+
+## . 
+
+### .1 문제
+
+
+
+### .2 답
+---
+
+
+
+---
 
