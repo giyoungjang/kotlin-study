@@ -7,7 +7,8 @@
 
  - Kotlin 공식사이트
  - <https://kotlinlang.org/>
-
+ - Get started -> Basic -> Basic syntax (⭐️완료) -> ❗️이 외에도 볼 자료가 많아서 차후 진행할 예정
+   
 ## 📝 Android 공부법
 
  - Android-practice - 홍드로이드 강의 (⭐️완료)
@@ -23,7 +24,7 @@
  - 안드로이드 문서
  - <https://developer.android.com/develop?hl=ko>
    - 모든 개발자 가이드에 들어가 하나씩 클릭해보며 공부하고 정리하기
-   - 
+     
     ✏️ 앱 기본요소, 앱 아키텍쳐 가이드, 인텐트 및 인텐트 필터, 앱 진입점 -> 활동 중요
 
     ✏️ 앱 아키텍쳐, 생명주기, Context와 Intent 등 이론 중요
