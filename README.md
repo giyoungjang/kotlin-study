@@ -2,7 +2,7 @@
 
 ## 📝 kotlin 공부법
 
- - kotlin문법 - DIMO 코틀린 기초문법 (완료)
+ - kotlin문법 - DIMO 코틀린 기초문법 (⭐️완료)
  - programmers 로 코딩테스트 공부 겸 코틀린 문법 이해. (진행중) 2024.02.25 ~
 
  - Kotlin 공식사이트
@@ -10,19 +10,22 @@
 
 ## 📝 Android 공부법
 
- - Android-practice - 홍드로이드 강의 (완료)
+ - Android-practice - 홍드로이드 강의 (⭐️완료)
    
  - 안드로이드 공식사이트 공부
  - <https://developer.android.com/?authuser=1&hl=ko>
  - Kotlin -> 시작하기 -> Android와 Kotlin을 기초부터 배우기 (진행중) 2024.02.25 ~
 
  - 기본이 되면 간단한 앱 만들어 보기
+   
     ✏️ RecyclerView + Kotlin + 코루틴 사용하기
    
  - 안드로이드 문서
  - <https://developer.android.com/develop?hl=ko>
    - 모든 개발자 가이드에 들어가 하나씩 클릭해보며 공부하고 정리하기
+   - 
     ✏️ 앱 기본요소, 앱 아키텍쳐 가이드, 인텐트 및 인텐트 필터, 앱 진입점 -> 활동 중요
+
     ✏️ 앱 아키텍쳐, 생명주기, Context와 Intent 등 이론 중요
 
 ## 📝 Jetpack Compose 공부법
@@ -38,6 +41,7 @@
     샘플도 제공해주는데 코드 살펴보고 비슷한 형식으로 만들어보기
 
 ## 📝 자주사용하는 라이브러리 공부하기
+
   - ✏️ Gson, Retrofit, Hilt Dagger, Glide
 
 ## 📝 신기술 공부법
