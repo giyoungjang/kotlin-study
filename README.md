@@ -8,6 +8,8 @@
  - Kotlin 공식사이트
  - <https://kotlinlang.org/>
  - Get started -> Basic -> Basic syntax (⭐️완료) -> ❗️이 외에도 볼 자료가 많아서 차후 진행할 예정
+
+ - 코틀린 무료로 배울 수 있는 곳 <https://hyperskill.org/tracks/18>
    
 ## 📝 Android 공부법
 
@@ -16,7 +18,6 @@
  - 안드로이드 공식사이트 공부
  - <https://developer.android.com/?authuser=1&hl=ko>
  - Kotlin -> 시작하기 -> Android와 Kotlin을 기초부터 배우기 (진행중) 2024.02.25 ~
-
  - 기본이 되면 간단한 앱 만들어 보기
    
     ✏️ RecyclerView + Kotlin + 코루틴 사용하기
