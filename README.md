@@ -2,17 +2,17 @@
 
 ## 📝 kotlin 공부법
 
- - kotlin문법 - DIMO 코틀린 기초문법 (⭐️완료)
+ - ~~kotlin문법 - DIMO 코틀린 기초문법~~ (⭐️완료)
  - programmers 로 코딩테스트 공부 겸 코틀린 문법 이해. (진행중) 2024.02.25 ~
 
  - Kotlin 공식사이트 <https://kotlinlang.org/>
- - Get started -> Basic -> Basic syntax (⭐️완료) -> ❗️이 외에도 볼 자료가 많아서 차후 진행할 예정
+ - ~~Get started -> Basic -> Basic syntax~~ (⭐️완료) -> ❗️이 외에도 볼 자료가 많아서 차후 진행할 예정
 
  - 코틀린 무료로 배울 수 있는 사이트 <https://hyperskill.org/tracks/18> -> 차후에 사용해 볼 예정
    
 ## 📝 Android 공부법
 
- - Android-practice - 홍드로이드 강의 (⭐️완료)
+ - ~~Android-practice~~ - 홍드로이드 강의 (⭐️완료)
    
  - 안드로이드 공식사이트 공부 <https://developer.android.com/?authuser=1&hl=ko>
  - Kotlin -> 시작하기 -> Android와 Kotlin을 기초부터 배우기 (진행중) 2024.02.25 ~
