@@ -2,6 +2,10 @@
 <img width="804" alt="스크린샷 2024-02-27 오후 8 15 29" src="https://github.com/giyoungjang/kotlin-study/assets/126555597/e6ef74ba-7200-4793-8b3a-241e2c0fa5a3">
 <img width="803" alt="스크린샷 2024-02-27 오후 8 15 38" src="https://github.com/giyoungjang/kotlin-study/assets/126555597/00550a76-709c-460e-a86f-4f41c907354f">
 
+## 결과물
+
+<img width="453" alt="스크린샷 2024-02-27 오후 8 54 26" src="https://github.com/giyoungjang/kotlin-study/assets/126555597/8ab52506-9e4d-434a-aab9-f1c4a966b274">
+
 ---
 
     package com.jang.taskcompleted
