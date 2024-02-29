@@ -64,6 +64,49 @@ when
     }
 
 
+## null 허용 여부 사용
+
+
+    fun main() {
+        var number: Int? = 10
+        println(number)
+    
+        number = null
+        println(number)
+    }
+
+
+그러나 
+
+    fun main() {
+        var favoriteActor: String? = "Sandra Oh"
+        println(favoriteActor.length)
+    }
+
+이렇게 하면 호출되지않고 오류가 발생한다.
+
+    fun main() {
+        var favoriteActor: String? = "Sandra Oh"
+        println(favoriteActor?.length)
+    }
+
+이렇게 ?.을 하게되면 오류가 발생하지 않는다. null을 임시허용해준다.
+
+    fun main() {
+        var favoriteActor: String? = "Sandra Oh"
+        println(favoriteActor!!.length)
+    }
+
+이렇게 하면 오류가 없다.
+
+    fun main() {
+        var favoriteActor: String? = null
+        println(favoriteActor!!.length)
+    }
+
+이러면 오류 발생!!
+null이 아님이 확실하지 않다면 null이 아닌 !! 어설션 연산자를 사용하지 않는 것이 좋습니다.
+
 
 
 
