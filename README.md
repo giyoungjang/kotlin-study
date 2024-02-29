@@ -88,4 +88,6 @@
 
 출처 - <https://velog.io/@gogumi4502/Android-%EA%B3%B5%EB%B6%80%EB%B0%A9%EB%B2%95>
 
+자극받기 - <https://brunch.co.kr/@roseline/28>
+
 ---
