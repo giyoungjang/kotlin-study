@@ -12,11 +12,200 @@
 
 <img width="445" alt="스크린샷 2024-03-05 오후 4 28 51" src="https://github.com/giyoungjang/kotlin-study/assets/126555597/4f7f061e-1d0b-4768-be2a-a6da25f273ef">
 
-- [플레이그라운드]<https://play.kotlinlang.org/#eyJ2ZXJzaW9uIjoiMS45LjIyIiwicGxhdGZvcm0iOiJqYXZhIiwiYXJncyI6IiIsIm5vbmVNYXJrZXJzIjp0cnVlLCJ0aGVtZSI6ImlkZWEiLCJjb2RlIjoiZnVuIG1haW4oKSB7XG4gICAgdmFsIGtvdGxpbiA9IFwi8J+ZglwiXG4gICAgcHJpbnRsbihrb3RsaW4pXG59In0=>
+- [플레이그라운드](https://play.kotlinlang.org/#eyJ2ZXJzaW9uIjoiMS45LjIyIiwicGxhdGZvcm0iOiJqYXZhIiwiYXJncyI6IiIsIm5vbmVNYXJrZXJzIjp0cnVlLCJ0aGVtZSI6ImlkZWEiLCJjb2RlIjoiZnVuIG1haW4oKSB7XG4gICAgdmFsIGtvdGxpbiA9IFwi8J+ZglwiXG4gICAgcHJpbnRsbihrb3RsaW4pXG59In0=) 에서 smartDevice 클래스 정의
 
-- 
+---
 
-## 3. 
+    class SmartDevice {
+        // empty body
+    }
+    
+    fun main() {
+    }
+
+--- 
+
+## 3. 클래스 인스턴스 만들기
+
+---
+
+    class SmartDevice {
+        // empty body
+    }
+        
+    fun main() {
+        val smartTvDevice = SmartDevice()
+    }
+    
+---
+
+## 4. 클래스 메서드 정의
+
+- 휴대전화로 켜고 끌 수 있는 스마트 기기, 스마트 TV 또는 스마트 조명이 있다고 가정하겠습니다.
+- turnOn, turnOff 메소드 정의
+
+---
+
+    class SmartDevice {
+        fun turnOn() {
+            println("Smart device is turned on.")
+        }
+    
+        fun turnOff() {
+            println("Smart device is turned off.")
+        }
+    }
+
+---
+
+<img width="561" alt="스크린샷 2024-03-05 오후 4 38 34" src="https://github.com/giyoungjang/kotlin-study/assets/126555597/02e8a936-d736-42f7-ac84-d347175f2229">
+
+---
+
+    fun main() {
+        val smartTvDevice = SmartDevice()
+        smartTvDevice.turnOn()
+        smartTvDevice.turnOff()
+    }
+
+---
+
+    Smart device is turned on.
+    Smart device is turned off.
+
+---
+
+## 5. 클래스 속정 정의
+
+- turnOn() 메서드 앞에 있는 줄에서 name 속성을 정의하고 "Android TV" 문자열에 할당합니다.
+- name 속성 다음 줄에서 category 속성을 정의하고 "Entertainment" 문자열에 할당한 다음 deviceStatus 속성을 정의하고 "online" 문자열에 할당합니다.
+- smartTvDevice 변수 다음 줄에서 println() 함수를 호출한 다음 이 함수에 "Device name is: ${smartTvDevice.name}" 문자열을 전달합니다.
+
+---
+
+    class SmartDevice {
+    
+        val name = "Android TV"
+        val category = "Entertainment"
+        var deviceStatus = "online"
+    
+        fun turnOn() {
+            println("Smart device is turned on.")
+        }
+    
+        fun turnOff() {
+            println("Smart device is turned off.")
+        }
+    }
+    
+    fun main() {
+        val smartTvDevice = SmartDevice()
+        println("Device name is: ${smartTvDevice.name}")
+        smartTvDevice.turnOn()
+        smartTvDevice.turnOff()
+    }
+
+---
+
+    Device name is: Android TV
+    Smart device is turned on.
+    Smart device is turned off.
+
+---
+
+### 속성의 getter 함수와 setter 함수
+
+- 예를 들어 TV에 소리 볼륨의 속성을 넣는다고 하였을때 볼륨은 100을 초과하거나 0미만으로 떨어지지 않도록 하려면 setter함수를 작성하면 됩니다.
+- name 속성을 대문자로 변환하는 getter 함수를 구현할 수 있씁니다.
+  
+<img width="564" alt="스크린샷 2024-03-05 오후 4 45 54" src="https://github.com/giyoungjang/kotlin-study/assets/126555597/67702d3a-8019-45a9-b4c5-e2d68b299010">
+
+ - 속성에 getter 및 setter 함수를 정의하지 않으면 Kotlin 컴파일러가 내부적으로 함수를 생성합니다. 예를 들어 var 키워드를 사용하여 speakerVolume 속성을 정의하고 2 값을 할당하는 경우 컴파일러는 다음 코드 스니펫에서 볼 수 있듯이 getter 함수와 setter 함수를 자동으로 생성합니다.
+
+---
+
+    var speakerVolume = 2
+        get() = field
+        set(value) {
+            field = value
+        }
+
+---
+
+<img width="568" alt="스크린샷 2024-03-05 오후 4 50 58" src="https://github.com/giyoungjang/kotlin-study/assets/126555597/3cb01eb8-90b2-40a1-aa4c-5c9748750d18">
+
+~~이부분이 이해가 잘 되지 않습니다...~~
+
+- 그래서 범위를 0~100 속하게 하려면
+
+---
+
+    var speakerVolume = 2
+        set(value) {
+            if (value in 0..100) {
+                field = value
+            }
+        }
+
+---
+
+## 6. 생정자 정의
+
+- 기본생성자로 class SmartDevice constructor()에서 공개 상태 수정자가 없는 경우 constructor를 생략할 수 있습니다.
+
+---
+
+    class SmartDevice {
+        ...
+    }
+
+---
+
+### 매개변수화된 생성자 정의
+
+- 현재는 name 속성과 category 속성은 변경할 수 없습니다. 그러므로 모든 인스턴스가 속성을 초기화하도록 해야합니다.
+
+---
+
+    class SmartDevice(val name: String, val category: String) {
+    
+        var deviceStatus = "online"
+    
+        fun turnOn() {
+            println("Smart device is turned on.")
+        }
+    
+        fun turnOff() {
+            println("Smart device is turned off.")
+        }
+    }
+
+---
+
+<img width="577" alt="스크린샷 2024-03-05 오후 5 59 37" src="https://github.com/giyoungjang/kotlin-study/assets/126555597/e57f4874-bd80-438a-a04d-d387a74bfb03">
+
+---
+
+    class SmartDevice(val name: String, val category: String) {
+        var deviceStatus = "online"
+    
+        constructor(name: String, category: String, statusCode: Int) : this(name, category) {
+            deviceStatus = when (statusCode) {
+                0 -> "offline"
+                1 -> "online"
+                else -> "unknown"
+            }
+        }
+        ...
+    }
+
+---
+
+- 보조생성자를 생성하고 초기화 할 수 있습니다.
+
+## 7. 클래스 간의 관계 구현
+
+
 
 ## 8. 공개 상태 수정자
 
