@@ -8,7 +8,12 @@
 
 코드를 수정한 후에는 앱 바의 색상이 자동으로 변경 된 것을 볼 수 있습니다.
 
+- 색상추가 [Material 테마 빌더](https://m3.material.io/theme-builder#/custom)
+- 도형추가
+- 서체추가 [google fonts](https://fonts.google.com/download/next-steps?query=abril&authuser=1&hl=ko)
+- 상단 바 추가
 
+<img width="207" alt="스크린샷 2024-03-17 오후 6 16 15" src="https://github.com/giyoungjang/kotlin-study/assets/126555597/841a84bd-b463-4c80-83c1-b68a12a91069">
 
 
 
