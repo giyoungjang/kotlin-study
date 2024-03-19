@@ -1,0 +1,33 @@
+<resources>
+    <string name="app_name">Thirty</string>
+
+    <string name="day1">런닝 래리</string>
+    <string name="description1">달리기 전문가</string>
+
+    <string name="day2">스트레칭 스테이시</string>
+    <string name="description2">신체 유연성 전문가</string>
+
+    <string name="day3">근육 거물 마이크</string>
+    <string name="description3">근육 트레이너</string>
+
+    <string name="day4">유산소 에반</string>
+    <string name="description4">유산소 운동 마스터</string>
+
+    <string name="day5">요가 요시</string>
+    <string name="description5">요가 강사</string>
+
+    <string name="day6">스피닝 스테판</string>
+    <string name="description6">실내 자전거 전문가</string>
+
+    <string name="day7">복싱 브라이언</string>
+    <string name="description7">복싱 챔피언</string>
+
+    <string name="day8">필라테스 필립</string>
+    <string name="description8">필라테스 강사</string>
+
+    <string name="day9">웨이트 트레이너 웬디</string>
+    <string name="description9">웨이트 트레이닝 전문가</string>
+
+    <string name="day10">체조 체리</string>
+    <string name="description10">체조 교육자</string>
+</resources>
