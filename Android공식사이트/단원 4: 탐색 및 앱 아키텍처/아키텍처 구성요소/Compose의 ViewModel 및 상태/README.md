@@ -1,4 +1,4 @@
-~<너무 어렵다고 느껴졌습니다>~
+~<너무 어렵다고 느껴졌습니다. 그래서 실습과정을 멈추고 [개발하는정대리 ViewModel](https://www.youtube.com/watch?v=-b0VNKw_niY) 를 참조하여 정리를 하였습니다.>~
 
 
 ##  시작하기 전에
@@ -193,6 +193,73 @@ collectAsState() 함수는 이 StateFlow에서 값을 수집하고 State를 통�
 ### 추측 단어 표시하기
 
 <img width="554" alt="스크린샷 2024-03-21 오후 2 40 30" src="https://github.com/giyoungjang/kotlin-study/assets/126555597/e2f3c53f-aa4d-48ca-9fb3-d49af3a841f2">
+
+
+
+
+< 스탑 >
+
+생명주기에서는 화면을 돌리게 되면 다시 호출해야하고 다시 그려야하는 경우가 있습니다. 그러나 ViewModel은 다시 그리지않고도 유지되는 장점이 있습니다.
+
+<img width="473" alt="스크린샷 2024-03-21 오후 3 09 59" src="https://github.com/giyoungjang/kotlin-study/assets/126555597/4449895c-3ba5-4412-ab48-ae1316058cc5">
+
+LiveData 와 항상 같이 다닌다고 생각하면 됩니다.
+
+gradle 을 이용해서 외부데이터를 사용해야합니다. 
+
+[android kotlin viewmodel gradle](https://developer.android.com/jetpack/androidx/releases/lifecycle?hl=ko) 라고 구글링 하면
+
+
+def lifecycle_version = "2.7.0"
+
+// 뷰모델 - 라이프 사이클 관련
+// ViewModel
+implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_version"
+// ViewModel utilities for Compose
+implementation "androidx.lifecycle:lifecycle-viewmodel-compose:$lifecycle_version"
+
+// 라이브 데이터 - 옵저버 패턴 관련 - 즉 데이터의 변경 사항을 알 수 있다.
+// LiveData
+implementation "androidx.lifecycle:lifecycle-livedata-ktx:$lifecycle_version"
+
+이렇게 gradle 파일에 맞는 버전과 코드들을 추가하면 됩니다. 
+
+//데이터의 변경
+// 뷰모델은 데이터의 변경사항 알려주는 라이브 데이터를 가지고 있고
+//라이브 데이터
+
+
+
+class MyNumberViewModel : ViewModel() {
+
+    //뮤터블 라이브 데이터 - 수정 가능한 녀석
+    //라이브 데이터 - 값 변동 안됨
+
+    // 내부에서 설정하는 자료형은 뮤터블로
+    // 변경가능하도록 설정
+    private val _currentValue = MutableLiveData<Int>()
+
+    //변경되지 않는 데이터를 가져 올때 이름을 _ 언더스코어 없이 설정
+    //공개적으로 가져오는 변수는 private 이 아닌 퍼블릭으로 외부에서도 접근가능하도록 설정
+    //하지만 값을 직접 라이브데이터에 접근하지 않고 뷰모델을 통해 가져올수 있도록 설정
+    val currentValue: LiveData<Int>
+        get() = _currentValue
+    
+    //초기값 형성
+    init {
+        Log.d(TAG, "MyNumberViewModel - 생성자 호출"
+        _currentValue.value = 0
+    }
+}
+
+
+
+
+
+
+
+
+
 
 
 
