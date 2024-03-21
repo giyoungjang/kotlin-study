@@ -197,7 +197,10 @@ collectAsState() 함수는 이 StateFlow에서 값을 수집하고 State를 통�
 
 
 
-~< 스탑 >
+
+
+
+< 스탑 >
 
 생명주기에서는 화면을 돌리게 되면 다시 호출해야하고 다시 그려야하는 경우가 있습니다. 그러나 ViewModel은 다시 그리지않고도 유지되는 장점이 있습니다.
 
@@ -250,7 +253,13 @@ class MyNumberViewModel : ViewModel() {
         Log.d(TAG, "MyNumberViewModel - 생성자 호출"
         _currentValue.value = 0
     }
-}~
+}
+
+
+
+
+<이어서>
+
 
 
 
