@@ -1,3 +1,5 @@
+~<너무 어렵다고 느껴졌습니다>~
+
 
 ##  시작하기 전에
 
@@ -158,6 +160,44 @@ asStateFlow()는 이 변경 가능 상태 흐름을 읽기 전용 상태 흐름�
 ---
 
 ## Compose UI 설계
+
+### 단방향 데이터 흐름
+
+- 이벤트: UI의 일부가 이벤트를 생성하여 위쪽으로 전달하거나(예: 처리하기 위해 ViewModel에 전달되는 버튼 클릭) 앱의 다른 레이어에서 이벤트가 전달됩니다(예: 사용자 세션이 종료되었음을 표시).
+- 상태 업데이트: 이벤트 핸들러가 상태를 변경할 수도 있습니다.
+- 상태 표시: 상태 홀더가 상태를 아래로 전달하고 UI가 상태를 표시합니다.
+
+<img width="470" alt="스크린샷 2024-03-21 오후 2 03 11" src="https://github.com/giyoungjang/kotlin-study/assets/126555597/60b2498c-5c00-47f5-bc39-d1ae8b2d9122">
+
+### 데이터 전달하기
+
+GameScreen.kt 파일에서 ViewModel 인스턴스를 UI로(즉, GameViewModel에서 GameScreen()으로) 전달합니다. GameScreen()에서 collectAsState()를 통해 ViewModel 인스턴스를 사용하여 uiState에 액세스합니다.
+
+collectAsState() 함수는 이 StateFlow에서 값을 수집하고 State를 통해 최신 값을 나타냅니다. StateFlow.value는 초깃값으로 사용됩니다. StateFlow에 새 값이 게시될 때마다 반환된 State가 업데이트되어 State.value가 사용된 모든 경우에서 재구성이 이루어집니다.
+
+---
+
+    @Composable
+    fun GameScreen(
+       gameViewModel: GameViewModel = viewModel()
+    ) {
+       // ...
+    }
+
+---
+
+<img width="385" alt="스크린샷 2024-03-21 오후 2 09 17" src="https://github.com/giyoungjang/kotlin-study/assets/126555597/132dbf55-0bc6-403b-ba3d-196e14af0ab3">
+
+<img width="506" alt="스크린샷 2024-03-21 오후 2 38 25" src="https://github.com/giyoungjang/kotlin-study/assets/126555597/5f56592a-660f-4c3a-a05d-eb580cd2b812">
+
+### 추측 단어 표시하기
+
+<img width="554" alt="스크린샷 2024-03-21 오후 2 40 30" src="https://github.com/giyoungjang/kotlin-study/assets/126555597/e2f3c53f-aa4d-48ca-9fb3-d49af3a841f2">
+
+
+
+
+
 
 
 
