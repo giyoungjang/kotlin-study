@@ -3,7 +3,7 @@
 
 
 [Cupcake 앱 테스트](https://developer.android.com/courses/pathways/android-basics-compose-unit-4-pathway-2?authuser=1&hl=ko#codelab-https://developer.android.com/codelabs/basic-android-kotlin-compose-test-cupcake)
-솔직히... 뭘 위해 하는지 잘 모르겠습니다. 나중에 앱 테스트 할 일이 생긴다면 다시 참조하여 공부를 해봐야할꺼같습니다.
+솔직히... 열심히 따라했지만 중요성을 크게 느끼지 못하였습니다. 나중에 앱 테스트 할 일이 생긴다면 다시 참조하여 공부를 해봐야할꺼같습니다.
 
 
 
