@@ -15,6 +15,10 @@
 
 
 
+## 실행 중인 worker가 알림 메세지에 표시됩니다.
+
+<img width="251" alt="스크린샷 2024-04-16 오후 4 25 50" src="https://github.com/giyoungjang/kotlin-study/assets/126555597/f3ba5721-6e10-4c84-84ee-5b09b341b95d">
+
 
 
 
