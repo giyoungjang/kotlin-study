@@ -15,7 +15,7 @@
  - ~~Android-practice~~ - 홍드로이드 강의 (⭐️완료)
    
  - [안드로이드 공식사이트 공부](https://developer.android.com/?authuser=1&hl=ko)
- - Kotlin -> 시작하기 -> Android와 Kotlin을 기초부터 배우기 (진행중) 2024.02.25 ~
+ - ~~Kotlin -> 시작하기 -> Android와 Kotlin을 기초부터 배우기 (진행중) 2024.02.25 ~ 2024.04.20~~
  - 기본이 되면 간단한 앱 만들어 보기
    
     ✏️ RecyclerView + Kotlin + 코루틴 사용하기
