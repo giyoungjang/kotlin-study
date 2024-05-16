@@ -3,7 +3,7 @@
 ## 📝 kotlin 공부법
 
  - ~~[kotlin문법 - DIMO 코틀린 기초문법](https://github.com/giyoungjang/kotlin-study/tree/main/kotlin%EB%AC%B8%EB%B2%95)~~ (⭐️완료)
- - ~~programmers 로 코딩테스트 공부 겸 코틀린 문법 이해. (일시정지) 2024.02.25~~
+ - ~~programmers 로 코딩테스트 공부 겸 코틀린 문법 이해. 2024.02.25~ (일시정지)~~
 
  - [Kotlin 공식사이트](https://kotlinlang.org/)
  - ~~Get started -> Basic -> Basic syntax~~ (⭐️완료) -> ❗️이 외에도 볼 자료가 많아서 차후 진행할 예정
