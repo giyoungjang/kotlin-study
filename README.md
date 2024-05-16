@@ -87,7 +87,7 @@
 ---
 
 출처 - <https://velog.io/@gogumi4502/Android-%EA%B3%B5%EB%B6%80%EB%B0%A9%EB%B2%95>
-
+출처 - [저세상개발자](https://www.youtube.com/watch?v=6mkU04ZuQ5E)
 자극받기 - <https://brunch.co.kr/@roseline/28>
 
 ---
