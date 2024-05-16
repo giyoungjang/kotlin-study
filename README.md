@@ -3,7 +3,7 @@
 ## 📝 kotlin 공부법
 
  - ~~[kotlin문법 - DIMO 코틀린 기초문법](https://github.com/giyoungjang/kotlin-study/tree/main/kotlin%EB%AC%B8%EB%B2%95)~~ (⭐️완료)
- - programmers 로 코딩테스트 공부 겸 코틀린 문법 이해. (진행중) 2024.02.25 ~
+ - ~~programmers 로 코딩테스트 공부 겸 코틀린 문법 이해. (일시정지) 2024.02.25~~~
 
  - [Kotlin 공식사이트](https://kotlinlang.org/)
  - ~~Get started -> Basic -> Basic syntax~~ (⭐️완료) -> ❗️이 외에도 볼 자료가 많아서 차후 진행할 예정
@@ -15,7 +15,7 @@
  - ~~Android-practice~~ - 홍드로이드 강의 (⭐️완료)
    
  - [안드로이드 공식사이트 공부](https://developer.android.com/?authuser=1&hl=ko)
- - ~~Kotlin -> 시작하기 -> Android와 Kotlin을 기초부터 배우기 (진행중) 2024.02.25 ~ 2024.04.20~~
+ - ~~Kotlin -> 시작하기 -> Android와 Kotlin을 기초부터 배우기 (⭐️완료)(복습필요) 2024.02.25 ~ 2024.04.20~~
  - 기본이 되면 간단한 앱 만들어 보기
    
     ✏️ RecyclerView + Kotlin + 코루틴 사용하기
